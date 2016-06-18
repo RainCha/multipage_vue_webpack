@@ -2,6 +2,7 @@
   <div class="app">
     <h1>这是首页</h1>
     <about></about>
+    <h6>测试测试</h6>
   </div>
 </template>
 

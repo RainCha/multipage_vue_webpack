@@ -4,7 +4,7 @@
   "description": "Vue 多页站点",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack -p && webpack-dev-server",
     "build": "webpack -p"
   },
   "repository": {

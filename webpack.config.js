@@ -11,7 +11,8 @@ module.exports = {
   entry: {
     index: devEntry +'/index/index.js',
     about: devEntry +'/about/about.js',
-    list:  devEntry +'/list/list.js'
+    list:  devEntry +'/list/list.js',
+    concat:  devEntry +'/concat/concat.js',
     // ....
   },
   output: {
@@ -68,6 +69,17 @@ module.exports = {
       inject: true,
       hash: true,
       chunks: ['about'],
+      minify: {
+        removeComments: true,
+        collapseWhitespace: false
+      }
+    }),
+    new HtmlWebpackPlugin({
+      filename: './concat/index.html',
+      template: './src/webpackTpl.html',
+      inject: true,
+      hash: true,
+      chunks: ['concat'],
       minify: {
         removeComments: true,
         collapseWhitespace: false
