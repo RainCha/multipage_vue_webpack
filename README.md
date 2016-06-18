@@ -49,7 +49,7 @@ new HtmlWebpackPlugin({
 
 这段代码的作用是创建 html 文件，并引入所依赖的 js 文件，可以发现与其他 HtmlWebpackPlugin 不同之处 只有 filename 和 chunks 两处。
 
-6. 运行 `npm run dev` 后，打开浏览器 输入 `localhost:3040/detail` ,便可以看到内容。
+运行 `npm run dev` 后，打开浏览器 输入 `localhost:3040/detail` ,便可以看到内容。
 
 之后就可以在 `Detail.vue` 中快快乐乐的写代码了。
 
