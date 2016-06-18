@@ -1,20 +1,21 @@
 var path = require('path');
 var webpack = require('webpack');
+var _ = require('lodash');
 
 // 生成HTML
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+// 读取所有入口文件名
+var entryNames = require('./readfile.js');
+
+console.log("入口文件名:",entryNames);
+
+
 // 所有的入口所在目录
 var devEntry = './src/views';
 
-module.exports = {
-  entry: {
-    index: devEntry +'/index/index.js',
-    about: devEntry +'/about/about.js',
-    list:  devEntry +'/list/list.js',
-    concat:  devEntry +'/concat/concat.js',
-    // ....
-  },
+var webpackConfig = {
+  entry: {}, //放在底部注入
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: '/dist/',
@@ -41,6 +42,11 @@ module.exports = {
     ]
   },
   plugins: [
+
+    //热加载
+    new webpack.HotModuleReplacementPlugin(),
+
+    //  保留首页，其余页面从底部注入
     new HtmlWebpackPlugin({
       filename: './index.html',
       template: './src/webpackTpl.html',
@@ -52,41 +58,6 @@ module.exports = {
         collapseWhitespace: false
       }
     }),
-    new HtmlWebpackPlugin({
-      filename: './list/index.html',
-      template: './src/webpackTpl.html',
-      inject: true,
-      hash: true,
-      chunks: ['list'],
-      minify: {
-        removeComments: true,
-        collapseWhitespace: false
-      }
-    }),
-    new HtmlWebpackPlugin({
-      filename: './about/index.html',
-      template: './src/webpackTpl.html',
-      inject: true,
-      hash: true,
-      chunks: ['about'],
-      minify: {
-        removeComments: true,
-        collapseWhitespace: false
-      }
-    }),
-    new HtmlWebpackPlugin({
-      filename: './concat/index.html',
-      template: './src/webpackTpl.html',
-      inject: true,
-      hash: true,
-      chunks: ['concat'],
-      minify: {
-        removeComments: true,
-        collapseWhitespace: false
-      }
-    }),
-    //热加载
-    new webpack.HotModuleReplacementPlugin(),
   ],
   babel: {
    // enable stage 0 babel transforms.
@@ -100,4 +71,50 @@ module.exports = {
     inline: true, //可以监控js变化
     hot: true, //热启动
   }
+};
+
+
+// 加载入口与配置html页面输出
+var entriesHtmlObj = getEntriesAndHtml(entryNames);
+
+
+// 加载 HtmlWebpackPlugin 的所有配置
+webpackConfig.plugins = _.concat(webpackConfig.plugins,entriesHtmlObj.htmlArr);
+webpackConfig.entry =  _.assign({},webpackConfig.entry,entriesHtmlObj.entryObj);
+
+console.info("->=>=>=> webpack is running,please wait a second...");
+
+module.exports = webpackConfig ;
+
+
+
+// 加载入口与配置html页面输出
+function getEntriesAndHtml(entryNames){
+  var entryObj = {};
+  var htmlArr = [];
+  _.map(entryNames,function(entry){
+    entryObj[entry] = devEntry +'/'+entry+'/'+ entry +'.js';
+
+    // 过滤掉首页方便访问
+    if(entry !== 'index'){
+      var html_webpack_plugin = new HtmlWebpackPlugin({
+        filename: './'+ entry +'/index.html',
+        template: './src/webpackTpl.html',
+        inject: true,
+        hash: true,
+        chunks: [entry],
+        minify: {
+          removeComments: true,
+          collapseWhitespace: false
+        }
+      });
+      htmlArr.push(html_webpack_plugin);
+    }
+  });
+
+  return {
+    entryObj:entryObj,
+    htmlArr:htmlArr
+  }
+
 }

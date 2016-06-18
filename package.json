@@ -4,8 +4,9 @@
   "description": "Vue 多页站点",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -p && webpack-dev-server",
-    "build": "webpack -p"
+    "dev": "npm run readfile && webpack -p && webpack-dev-server",
+    "build": "npm run readfile && webpack -p",
+    "readfile": "node readfile"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
   },
   "homepage": "https://github.com/RainCha/multipage_vue_webpack#readme",
   "dependencies": {
+    "lodash": "^4.13.1",
     "vue": "^1.0.25"
   }
 }

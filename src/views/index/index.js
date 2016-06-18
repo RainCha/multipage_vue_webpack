@@ -3,7 +3,6 @@ import Vue from 'vue'
 import Index from '../../components/Index.vue'
 
 
-console.log(Vue,999)
 // mount a root Vue instance
 new Vue({
   el: '#app',
