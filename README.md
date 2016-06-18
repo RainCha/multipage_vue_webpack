@@ -17,10 +17,11 @@ Vue + ES6 + webpack 项目框架
 在浏览器打开 localhost:3040 请查看首页
 
 ### 简要说明
-
-`src/views  站点入口目录，放置的是入口的js；<br/ >
+```
+src/views        站点入口目录，放置的是入口的js；
 src/components   Vue 组件目录，所有的业务逻辑主要集中于此；
-src/assets  放置图片资源的目录`
+src/assets       放置图片资源的目录
+```
 
 ### 开发约定
 
