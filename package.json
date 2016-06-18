@@ -4,7 +4,7 @@
   "description": "Vue 多页站点",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot",
+    "dev": "webpack-dev-server --inline --hot --port 3030",
     "build": "webpack -p"
   },
   "repository": {
