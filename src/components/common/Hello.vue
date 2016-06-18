@@ -8,7 +8,13 @@
 <script>
 export default {
   components: {
-    
+
   }
 }
 </script>
+
+<style media="screen" >
+  h6{
+    color: red;
+  }
+</style>

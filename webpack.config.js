@@ -73,10 +73,19 @@ module.exports = {
         collapseWhitespace: false
       }
     }),
+    //热加载
+    new webpack.HotModuleReplacementPlugin(),
   ],
   babel: {
    // enable stage 0 babel transforms.
    presets: ['es2015', 'stage-0'],
    plugins: ['transform-runtime']
- }
+ },
+ devServer : {
+    contentBase: './dist',
+    host: 'localhost',
+    port: 3040, //默认8080
+    inline: true, //可以监控js变化
+    hot: true, //热启动
+  }
 }

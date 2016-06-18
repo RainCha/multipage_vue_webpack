@@ -14,3 +14,12 @@ export default {
   }
 }
 </script>
+
+
+<style lang="less">
+    .app{
+      h1{
+        color:green;
+      }
+    }
+</style>
