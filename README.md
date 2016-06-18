@@ -29,9 +29,9 @@ src/assets       放置图片资源的目录
 
 1. 在 `views` 目录新建 `detail` 目录，并在目录下 创建 `detail.js`。 结果： `/views/detail/detail.js`
 2. 拷贝一份 `index.js` 的内容粘贴至 `detail.js`, 修改其中所 import 的 `.vue` 文件为需要的 vue 组件 ，比如新建一个 `Detail.vue` 文件（里面要写点东西哦~）
-2. 打开 `webpack.config.js`
-3. 在 `entry` 里面 添加一行 `detail : devEntry +'/detail/detail.js'`,
-4. 找到 `plugins` 数组里面，追加下面一段代码：
+3. 打开 `webpack.config.js`
+4. 在 `entry` 里面 添加一行 `detail : devEntry +'/detail/detail.js'`,
+5. 找到 `plugins` 数组里面，追加下面一段代码：
 
 ```
 new HtmlWebpackPlugin({
@@ -49,7 +49,7 @@ new HtmlWebpackPlugin({
 
 这段代码的作用是创建 html 文件，并引入所依赖的 js 文件，可以发现与其他 HtmlWebpackPlugin 不同之处 只有 filename 和 chunks 两处。
 
-5. 运行 `npm run dev` 后，打开浏览器 输入 `localhost:3040/detail` ,便可以看到内容。
+6. 运行 `npm run dev` 后，打开浏览器 输入 `localhost:3040/detail` ,便可以看到内容。
 
 之后就可以在 `Detail.vue` 中快快乐乐的写代码了。
 
