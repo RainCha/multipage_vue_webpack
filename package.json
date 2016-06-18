@@ -4,7 +4,7 @@
   "description": "Vue 多页站点",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --port 3030",
+    "dev": "webpack-dev-server --inline --hot --port 3050",
     "build": "webpack -p"
   },
   "repository": {
@@ -24,6 +24,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-runtime": "^6.9.2",
     "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.21.0",
     "url-loader": "^0.5.7",
     "vue-hot-reload-api": "^1.2.2",
