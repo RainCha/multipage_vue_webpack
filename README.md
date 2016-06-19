@@ -1,4 +1,4 @@
-Vue + ES6 + webpack 项目框架
+Vue + ES6 + webpack 项目开发框架
 ---
 ### 准备工作
 
