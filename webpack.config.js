@@ -65,11 +65,11 @@ var webpackConfig = {
    plugins: ['transform-runtime']
  },
  devServer : {
-    contentBase: './dist',
-    host: 'localhost',
+     contentBase: './dist',  // 配置开发环境下的静态资源路径
+    host: 'localhost',    // 浏览器访问IP
     port: 3040, //默认8080
-    inline: true, //可以监控js变化
-    hot: true, //热启动
+    inline: true, // 监听变化，刷新页面
+    hot: true, //热加载
   }
 };
 
